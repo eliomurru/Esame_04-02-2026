@@ -1,12 +1,15 @@
+from dataclasses import dataclass
+@dataclass
 class Artist:
-    def __init__(self, artist_id, name, num_objects=0):
-        self.artist_id = artist_id
-        self.name = name
-        self.num_objects = num_objects
-        self.p = num_objects
+    id: int
+    name: str
+    produttivita : int
 
     def __str__(self):
-        return f"{self.name} (ID: {self.artist_id})"
+        return f"{self.name}"
 
     def __repr__(self):
         return self.__str__()
+
+    def __hash__(self):
+        return hash(self.id)

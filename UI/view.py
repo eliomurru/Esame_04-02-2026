@@ -26,7 +26,8 @@ class View:
     def set_controller(self, controller):
         self._controller = controller
 
-    def popola_dropdown_ruolo(self, ruoli):
+    def popola_dropdown_ruolo(self):
+        ruoli = self._controller.roles
         self.dd_ruolo.options = [ft.dropdown.Option(text=r) for r in ruoli]
         self.dd_ruolo.update()
 
@@ -68,6 +69,7 @@ class View:
 
         self._page.scroll = "adaptive"
         self._page.update()
+        self.popola_dropdown_ruolo()
 
     def _cambia_tema(self, e):
         self._page.theme_mode = ft.ThemeMode.DARK if self.toggle_tema.value else ft.ThemeMode.LIGHT
